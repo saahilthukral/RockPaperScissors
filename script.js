@@ -1,5 +1,3 @@
-
-//V1 of Rock Paper Scissors
 function computerPlay() {
     let arrays = ["Rock", "Paper", "Scissors"]; //Create Array
 
@@ -9,167 +7,105 @@ function computerPlay() {
 }
 
 function rps(playerSelection, computerSelection){
-    let counter1;
-    let result;
+    let counter1 = 0;
+    let counter2 = 0;
+    let counter3 = 0;
 
     playerSelection = playerSelection.toLowerCase(); //This levels all the values to lowercase
     computerSelection = computerSelection.toLowerCase();
 
     if(playerSelection === computerSelection){
-        console.log("It's a draw.");
-        counter1 = -1;
+        result = "It's a draw.";
+        counter3 += 1;
     }
     else{
         if(playerSelection == "rock"){
             if(computerSelection == "paper"){
-                console.log("Paper beats Rock, Computer Wins");
-                counter1 = 1;
+                result = "Paper beats Rock, Computer Wins";
+                counter1 += 1;
             }
             else{
-                console.log("Rock beats Scissors, Player wins");
-                counter1 = 0;
+                result = "Rock beats Scissors, Player wins";
+                counter2 += 1;
             }
         }
 
         else if(playerSelection == "paper"){
             if(computerSelection == "scissors"){
-                console.log("Scissors beats Paper, computer wins");
-                counter1 = 1;
+                result = "Scissors beats Paper, computer wins";
+                counter1 += 1;
             }
-            else{
-                console.log(result = "Paper beats Rock, Player wins");
-                counter1 = 0;
+            else{result = "Paper beats Rock, Player wins"
+                counter2 += 1;
         }
     }
 
-    else{
+    else if(playerSelection == "scissors"){
         if(computerSelection == "rock"){
-                console.log("Rock beats Scissors, computer wins");
-                counter1 = 1;
+                result = "Rock beats Scissors, computer wins";
+                counter1 += 1;
             }
             else{
-                console.log("Scissors beats Paper, Player wins");
-                counter1 = 0;
+                result = "Scissors beats Paper, Player wins";
+                counter2 += 1;
     }
-    }
-    }
-    console.log(counter1);
-
-    return counter1;
 }
-
-
-
-// console.log(rps(playerSelectio, computerSelectio));
-
-
-function game(){
-    let counter1 = 0;
-    let counter2 = 0;
-    let counter3 = 0;
-    let result, playerSelectio, computerSelectio;
-
-    playerSelectio = prompt("Enter your choice: Rock, Paper, Scissors");
-    computerSelectio = computerPlay();
-    
-    //Getting the number required and then adding it up to the counter 5 times (w/o loop)
-    counter = rps(playerSelectio, computerSelectio);
-    if(counter == 0){
-        counter1 += 1;
-    }
-    else if(counter == 1){
-            counter2 +=1;
-        }
     else{
-        counter3 += 1;
-    }
-
-    playerSelectio = prompt("Enter your choice: Rock, Paper, Scissors");
-    computerSelectio = computerPlay();
-    
-    //Getting the number required and then adding it up to the counter 5 times (w/o loop)
-    counter = rps(playerSelectio, computerSelectio);
-    if(counter == 0){
-        counter1 += 1;
-    }
-    else if(counter == 1){
-            counter2 +=1;
-        }
-    else{
-        counter3 += 1;
-    }
-
-    playerSelectio = prompt("Enter your choice: Rock, Paper, Scissors");
-    computerSelectio = computerPlay();
-    
-    //Getting the number required and then adding it up to the counter 5 times (w/o loop)
-    counter = rps(playerSelectio, computerSelectio);
-    if(counter == 0){
-        counter1 += 1;
-    }
-    else if(counter == 1){
-            counter2 +=1;
-        }
-    else{ if(counter == -1){
-        counter3 += 1;
-    }
-        
-    }
-
-    playerSelectio = prompt("Enter your choice: Rock, Paper, Scissors");
-    computerSelectio = computerPlay();
-    
-    //Getting the number required and then adding it up to the counter 5 times (w/o loop)
-    counter = rps(playerSelectio, computerSelectio);
-    if(counter == 0){
-        counter1 += 1;
-    }
-    else if(counter == 1){
-            counter2 +=1;
-        }
-    else{ if(counter == -1){
-        counter3 += 1;
+        result = "Error, try again";
+        console.log("Error, try again");
     }
     }
 
-    playerSelectio = prompt("Enter your choice: Rock, Paper, Scissors");
-    computerSelectio = computerPlay();
-    
-    //Getting the number required and then adding it up to the counter 5 times (w/o loop)
-    counter = rps(playerSelectio, computerSelectio);
-    if(counter == 0){
-        counter1 += 1;
-    }
-    else if(counter == 1){
-            counter2 +=1;
-        }
-    else{ if(counter == -1){
-        counter3 += 1;
-    }
-        
-}
-    console.log(counter1);
-    console.log(counter2);
-    console.log(counter3);
-    if (counter1 > counter2){
-        result = "Player wins";
-    }
-    else if (counter2 > counter1){
-        result = "Computer wins";
-    }
-    else{ if(counter3 == 5){
-        result = "It's a tie";
-    }
-        
-    }
-
-    return result;
-    
-
+    return [result, counter1, counter2, counter3];
 }
 
-console.log(game());
-    
-    
-    
-    
+let counter1 = 0;
+let counter2 = 0;
+const div1 = document.querySelector('#container2');
+const div3 = document.querySelector('#container3');
+const div4 = document.querySelector('#container4');
+const divs = document.createElement('div');
+const divs2 = document.createElement('div');
+const divs3 = document.createElement('div');
+const divs4 = document.createElement('div');
+
+const buttons = document.querySelectorAll('button');
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let result = rps(button.id, computerPlay());
+            counter1 += result[1];
+            counter2 += result[2];
+            divs.classList.add("divs");
+            divs.style.backgroundColor = "#FFFFFF";
+            divs2.style.backgroundColor = "rgb(230, 223, 199)";
+            divs3.style.backgroundColor = "rgb(230, 223, 199)";
+            divs4.style.backgroundColor = "#FFFFFF";
+            divs.style.margin = "auto 2%";
+            divs.style.padding = "1%";
+            divs2.style.margin = "auto 2%";
+            divs2.style.padding = "1%";
+            divs3.style.padding = "1%";
+            div3.style.margin = "auto 2%";
+            div4.style.margin = "auto 2%";
+            divs4.style.padding = "1%";
+
+
+            divs.textContent = result[0];
+            divs2.innerHTML = "Computer Score: " + counter1;
+            divs3.textContent = "Player Score: " + counter2;
+            if(counter1 == 5 || counter2 == 5){
+                if(counter1 > counter2){
+                    divs4.textContent = "Computer Wins, Better Luck next time :)";
+                }
+                else{
+                    divs4.textContent = "You win!!! Congratulations";
+                }
+            }
+        })
+    })
+
+div1.appendChild(divs);
+div3.appendChild(divs2);
+div3.appendChild(divs3);
+div4.appendChild(divs4);
