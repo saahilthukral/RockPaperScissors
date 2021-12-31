@@ -105,7 +105,15 @@ const buttons = document.querySelectorAll('button');
         })
     })
 
+<<<<<<< HEAD:script.js
 div1.appendChild(divs);
 div3.appendChild(divs2);
 div3.appendChild(divs3);
 div4.appendChild(divs4);
+=======
+console.log(game());
+    
+    
+    
+    
+>>>>>>> 3182746a62e3094b29476893ab63196b34207483:script-old.js
